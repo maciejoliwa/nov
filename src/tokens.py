@@ -26,6 +26,8 @@ class TokenType(Enum):
     NEWLINE = "\n"
     LEFT_BRACE = "{"
     RIGHT_BRACE = "}"
+    COLON = ","
+    DOT = "."
 
 @dataclass
 class Token:

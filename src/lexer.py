@@ -81,7 +81,6 @@ class Lexer:
         tokens = []
 
         while True:
-            # self.skip_whitespace()
             character = self.get_current_character()
 
             if character == '<' and self.peek() == '-':
@@ -138,6 +137,12 @@ class Lexer:
 
             elif character == '}':
                 tokens.append(Token(TokenType.RIGHT_BRACE, '}'))
+
+            elif character == '.':
+                tokens.append(Token(TokenType.DOT, '.'))
+
+            elif character == ',':
+                tokens.append(Token(TokenType.COLON, ','))
 
             elif character == '=' and self.peek() == '=':
                 tokens.append(Token(TokenType.EQUAL, '==='))
