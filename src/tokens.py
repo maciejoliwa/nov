@@ -24,6 +24,7 @@ class TokenType(Enum):
     MULTIPLY = "*"
     DIVIDE = "/"
     NEWLINE = "\n"
+    TAB = "\t"
     LEFT_BRACE = "{"
     RIGHT_BRACE = "}"
     COLON = ","

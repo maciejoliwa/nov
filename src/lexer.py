@@ -75,7 +75,7 @@ class Lexer:
             return self.parse_string(string)
 
         self.next_character()
-        return Token(TokenType.STRING, string + '"')
+        return Token(TokenType.STRING, (string + '`').replace('"', '`', 1))
 
     def tokenize(self) -> List[Token]:
         tokens = []
@@ -113,6 +113,9 @@ class Lexer:
 
             elif character == ')':
                 tokens.append(Token(TokenType.RIGHT_PAREN, ')'))
+
+            elif character == '\t':
+                tokens.append(Token(TokenType.TAB, '\t'))
 
             elif character == '+':
                 tokens.append(Token(TokenType.PLUS, '+'))
