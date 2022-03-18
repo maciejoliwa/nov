@@ -1,6 +1,11 @@
-age <- to_int(20);
-funny <- to_float(69);
-log(age + funny);
+i <- 0
 
-if (age < funny)
-  log(69);
+forever {
+    log("owo");
+
+    if (i == 5) {
+        break;
+    }
+
+    i <! i + 1;
+}

@@ -1,1 +1,11 @@
-const age = Number.parseInt(20);const funny = Number.parseFloat(69);console.log(age+funny);if(age<funny)console.log(69);
+let i = 0
+
+while(true){
+console.log("owo");
+
+if(i===5){
+break;
+}
+
+i = i+1;
+}
