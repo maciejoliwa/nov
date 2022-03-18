@@ -1,0 +1,1 @@
+const age = 20;const funny = 69;console.log(age+funny);
