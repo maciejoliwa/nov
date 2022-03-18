@@ -4,7 +4,10 @@ from tokens import Token, TokenType
 
 
 _TRANSLATIONS = {
-    "log": "console.log"
+    "log": "console.log",
+    "func": "function",
+    "to_int": "Number.parseInt",
+    "to_float": "Number.parseFloat"
 }
 
 @dataclass

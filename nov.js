@@ -1,1 +1,1 @@
-const age = 20;const funny = 69;console.log(age+funny);
+const age = Number.parseInt(20);const funny = Number.parseFloat(69);console.log(age+funny);if(age<funny)console.log(69);

@@ -43,7 +43,7 @@ class Lexer:
         if next_character is None:
             return Token(TokenType.IDENTIFIER, _literal)
 
-        if next_character.isalpha():
+        if next_character.isalpha() or next_character == '_':
             _literal += next_character
             self.next_character()
             return self.parse_identifer(_literal)
@@ -111,6 +111,9 @@ class Lexer:
 
             elif character == '\n':
                 tokens.append(Token(TokenType.NEWLINE, '\n'))
+
+            elif character == '_':
+                tokens.append(Token(TokenType.UNDERSCORE, '_'))
 
             # PARSE IDENTIFIER
             elif character.isalpha():
