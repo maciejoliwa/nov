@@ -8,6 +8,7 @@ _TRANSLATIONS = {
     "func": "function ",
     "forever": "while(true)",
     "to_int": "Number.parseInt",
+    "element": "document.querySelector",
     "return": "return ",
     "to_float": "Number.parseFloat"
 }
