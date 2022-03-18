@@ -11,7 +11,7 @@ log(age + funny);
 
 Output JavaScript:
 ```js
-const age = 20;
-const funny = 69;
+let age = 20;
+let funny = 69;
 console.log(age + funny);
 ```
