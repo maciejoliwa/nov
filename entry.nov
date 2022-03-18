@@ -1,11 +1,8 @@
-i <- 0
-
-forever {
-    log("owo");
-
-    if (i == 5) {
-        break;
-    }
-
-    i <! i + 1;
+func fib(n) {
+    if (n < 2) return n;
+    return fib(n - 1) + fib(n - 2);
 }
+
+results <- fib(10);
+
+log(results)
