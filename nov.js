@@ -1,5 +1,21 @@
-let i = 0;
-while(i<=69){
-console.log(i,` - hello`);
-i = i+1;
+let i = 0
+
+while(true){
+if(i===100){
+break;
+}
+if(i%3===0&&i%5===0){
+console.log(`FizzBuzz`)
+}
+ else if(i%3===0){
+console.log(`Fizz`)
+}
+ else if(i%5===0){
+console.log(`Buzz`)
+}
+else{
+console.log(i)
+}
+
+i = i+1
 }

@@ -27,6 +27,7 @@ class TokenType(Enum):
     TAB = "\t"
     LEFT_BRACE = "{"
     RIGHT_BRACE = "}"
+    MODULO = "%"
     COLON = ","
     DOT = "."
 

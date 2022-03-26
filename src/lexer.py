@@ -146,6 +146,9 @@ class Lexer:
 
             elif character == ',':
                 tokens.append(Token(TokenType.COLON, ','))
+            
+            elif character == '%':
+                tokens.append(Token(TokenType.MODULO, '%'))
 
             elif character == '=' and self.peek() == '=':
                 tokens.append(Token(TokenType.EQUAL, '==='))

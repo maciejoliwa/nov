@@ -1,5 +1,21 @@
-i <- 0;
-while (i <= 69) {
-    log(i, " - hello");
-    i <! i + 1;
+i <- 0
+
+forever {
+    if (i == 100) {
+        break;
+    }
+    if (i % 3 == 0 and i % 5 == 0) {
+        log("FizzBuzz")
+    }
+    elif (i % 3 == 0) {
+        log("Fizz")
+    } 
+    elif (i % 5 == 0) {
+        log("Buzz")
+    } 
+    else {
+        log(i)
+    }
+
+    i <! i + 1
 }
