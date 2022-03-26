@@ -1,0 +1,4 @@
+test_one <- "20";
+test_two <- "40";
+
+log(to_int(test_one) + to_int(test_two));
