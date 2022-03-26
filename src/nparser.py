@@ -10,6 +10,7 @@ _TRANSLATIONS = {
     "elif": " else if",
     "and": "&&",
     "or": "||",
+    "else": "else ",
     "to_int": "Number.parseInt",
     "element": "document.querySelector",
     "return": "return ",

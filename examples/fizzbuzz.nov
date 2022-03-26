@@ -1,0 +1,12 @@
+i <- 0;
+
+forever {
+    if (i >= 100) break;
+
+    if (i % 3 == 0 and i % 5 == 0) log("Fizzbuzz");
+    elif (i % 3 == 0) log("Fizz");
+    elif (i % 5 == 0) log("Buzz");
+    else log(i);
+    
+    i <! i + 1;
+}
