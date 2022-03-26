@@ -1,6 +1,21 @@
-age <- to_int(20);
-funny <- to_float(69);
-log(age + funny);
+i <- 0
 
-if (age < funny)
-  log(69);
+forever {
+    if (i == 100) {
+        break;
+    }
+    if (i % 3 == 0 and i % 5 == 0) {
+        log("FizzBuzz")
+    }
+    elif (i % 3 == 0) {
+        log("Fizz")
+    } 
+    elif (i % 5 == 0) {
+        log("Buzz")
+    } 
+    else {
+        log(i)
+    }
+
+    i <! i + 1
+}

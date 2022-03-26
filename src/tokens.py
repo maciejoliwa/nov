@@ -9,6 +9,7 @@ class TokenType(Enum):
     STRING = "<STRING>"
     NUMBER = "<NUMBER>"
     ASSIGN = "<-"
+    ASSIGN_NEW = "<!"
     GREATER = ">"
     GREATER_EQ = ">="
     LESS = "<"
@@ -23,6 +24,12 @@ class TokenType(Enum):
     MULTIPLY = "*"
     DIVIDE = "/"
     NEWLINE = "\n"
+    TAB = "\t"
+    LEFT_BRACE = "{"
+    RIGHT_BRACE = "}"
+    MODULO = "%"
+    COLON = ","
+    DOT = "."
 
 @dataclass
 class Token:

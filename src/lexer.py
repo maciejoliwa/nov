@@ -63,11 +63,24 @@ class Lexer:
 
         return Token(TokenType.NUMBER, _literal)
 
+    def parse_string(self, string: str) -> Token:
+        next_character = self.peek()
+
+        if next_character is None:
+            return Token(TokenType.STRING, string)
+
+        if next_character != '\"':
+            string += next_character
+            self.next_character()
+            return self.parse_string(string)
+
+        self.next_character()
+        return Token(TokenType.STRING, (string + '`').replace('"', '`', 1))
+
     def tokenize(self) -> List[Token]:
         tokens = []
 
         while True:
-            self.skip_whitespace()
             character = self.get_current_character()
 
             if character == '<' and self.peek() == '-':
@@ -76,6 +89,10 @@ class Lexer:
             
             elif character == '<' and self.peek() == '=':
                 tokens.append(Token(TokenType.LESS_EQ, '<='))
+                self.next_character()
+
+            elif character == '<' and self.peek() == '!':
+                tokens.append(Token(TokenType.ASSIGN_NEW, '<!'))
                 self.next_character()
 
             elif character == '<':
@@ -97,6 +114,9 @@ class Lexer:
             elif character == ')':
                 tokens.append(Token(TokenType.RIGHT_PAREN, ')'))
 
+            elif character == '\t':
+                tokens.append(Token(TokenType.TAB, '\t'))
+
             elif character == '+':
                 tokens.append(Token(TokenType.PLUS, '+'))
 
@@ -114,10 +134,31 @@ class Lexer:
 
             elif character == '_':
                 tokens.append(Token(TokenType.UNDERSCORE, '_'))
+            
+            elif character == '{':
+                tokens.append(Token(TokenType.LEFT_BRACE, '{'))
+
+            elif character == '}':
+                tokens.append(Token(TokenType.RIGHT_BRACE, '}'))
+
+            elif character == '.':
+                tokens.append(Token(TokenType.DOT, '.'))
+
+            elif character == ',':
+                tokens.append(Token(TokenType.COLON, ','))
+            
+            elif character == '%':
+                tokens.append(Token(TokenType.MODULO, '%'))
+
+            elif character == '=' and self.peek() == '=':
+                tokens.append(Token(TokenType.EQUAL, '==='))
 
             # PARSE IDENTIFIER
             elif character.isalpha():
                 tokens.append(self.parse_identifer(character))
+
+            elif character == '"':
+                tokens.append(self.parse_string(character))
             
             # PARSE NUMBER
             elif character.isdigit():

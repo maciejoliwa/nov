@@ -5,8 +5,14 @@ from tokens import Token, TokenType
 
 _TRANSLATIONS = {
     "log": "console.log",
-    "func": "function",
+    "func": "function ",
+    "forever": "while(true)",
+    "elif": " else if",
+    "and": "&&",
+    "or": "||",
     "to_int": "Number.parseInt",
+    "element": "document.querySelector",
+    "return": "return ",
     "to_float": "Number.parseFloat"
 }
 
@@ -45,7 +51,10 @@ class Parser:
                 token._literal = self.replace_nov_identifier(token._literal)
 
                 if self.peek()._type == TokenType.ASSIGN:
-                    output += f"const {token._literal} = "
+                    output += f"let {token._literal} = "
+                    self.next_token()
+                elif self.peek()._type == TokenType.ASSIGN_NEW:
+                    output += f"{token._literal} = "
                     self.next_token()
                 else:
                     output += token._literal

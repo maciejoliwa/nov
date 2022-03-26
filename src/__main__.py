@@ -1,18 +1,35 @@
+import pathlib
 from re import sub
+import sys
 from lexer import Lexer
 from nparser import Parser
 
 import subprocess
 
-with open("entry.nov", "r") as INPUT_FILE:
-    content = INPUT_FILE.read()
-    lexer = Lexer(list(content), 0)
-    tokens = lexer.tokenize()
-    parser = Parser(tokens)
+if __name__ == '__main__':
+    file = sys.argv[1]
+    file_path = pathlib.Path(file)
 
-    output = parser.parse()
+    if not file_path.is_file():
+        raise Exception("Not a file!!")
 
-    with open('nov.js', 'w') as OUTPUT_FILE:
-        OUTPUT_FILE.write(output)
+    try:
+        with open(file_path, 'r') as INPUT_FILE:
+            content = INPUT_FILE.read()
+            lexer = Lexer(list(content), 0)
+            tokens = lexer.tokenize()
+            parser = Parser(tokens)
 
-    subprocess.run(["node", "nov.js"])
+            output = parser.parse()
+
+            output_splitted_fname = file_path.name.split('.')[0:-1]
+            output_splitted_fname.append('.js')
+
+            final_output_fname = "".join(output_splitted_fname)
+
+            with open(final_output_fname, 'w') as OUTPUT_FILE:
+                OUTPUT_FILE.write(output)
+
+            subprocess.run(["node", final_output_fname])
+    except:
+        raise Exception("REEE") 
