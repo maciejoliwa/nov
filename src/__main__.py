@@ -11,7 +11,7 @@ if __name__ == '__main__':
     file_path = pathlib.Path(file)
 
     if not file_path.is_file():
-        raise Exception("Not a file!!")
+        print("Passed path is not a file!!")
 
     try:
         with open(file_path, 'r') as INPUT_FILE:
@@ -32,4 +32,4 @@ if __name__ == '__main__':
 
             subprocess.run(["node", final_output_fname])
     except:
-        raise Exception("REEE") 
+        print("There was an issue opening the file!!")
