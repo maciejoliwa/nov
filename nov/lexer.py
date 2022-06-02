@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import List, NoReturn, Any
-from enum import IntEnum, auto
+from enum import IntEnum
 from tokens import TokenType, Token 
 
 class LexerParsingState(IntEnum):
 
     EOF = 0,
-    CONTINUE = auto()
+    CONTINUE = 1
 
 
 @dataclass
