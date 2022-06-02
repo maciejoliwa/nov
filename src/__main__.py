@@ -47,6 +47,12 @@ if __name__ == '__main__':
     if verbose:
         print(f"{_COL_BLUE}Parsing the path...{_COL_END} 🦊")
     path = get_file_path(args_dict["Novfile"])
+    out_path = get_file_path(args_dict["Outfile"])
+
+    if path is None or out_path is None:
+        print("Invalid path, either provided .nov file path is invalid, or is the out file path")
+        sys.exit(1)
+
     if verbose:
         print(f"{_COL_GREEN}Done!\n{_COL_END}")
 
@@ -65,4 +71,14 @@ if __name__ == '__main__':
         if verbose:    
             print(f"{_COL_GREEN}Done!\n{_COL_END}")
 
-    print("Successfully transpiled your nov file! 🚀")
+        with open(out_path, 'w+') as OUTPUT_FILE:
+            OUTPUT_FILE.write(output)
+
+        print("Successfully transpiled your nov file! 🚀")
+        
+        if args_dict["no_run"] == False:
+            if 'prompt' in output:
+                print('Couldn\'t run file with node, since it uses web browser API')
+                sys.exit(0)
+
+            subprocess.run(['node', out_path])
