@@ -8,6 +8,10 @@ from nparser import Parser
 
 import subprocess
 
+_COL_END = '\033[0m'
+_COL_BLUE = '\033[94m'
+_COL_GREEN = '\033[92m'
+
 def get_file_path(user_given_path: str) -> typing.Optional[pathlib.Path]:
     path = pathlib.Path(user_given_path)
     
@@ -40,23 +44,22 @@ if __name__ == '__main__':
     verbose = args_dict["verbose"]
     
     if verbose:
-        print("Parsing the path...")
+        print(f"{_COL_BLUE}Parsing the path...{_COL_END}")
     path = get_file_path(args_dict["Novfile"])
     if verbose:
-        print("Done!\n")
-
+        print(f"{_COL_GREEN}Done!\n{_COL_END}")
 
     with open(path, 'r') as _INPUT_NOV_FILE:
         contents = _INPUT_NOV_FILE.read()
 
         if verbose:
-            print("Tokenizing...")
+            print(f"{_COL_BLUE}Tokenizing...{_COL_END}")
         tokens = Lexer(list(contents), 0).tokenize()
         if verbose:
-            print("Done!\n")
-
+            print(f"{_COL_GREEN}Done!\n{_COL_END}")
+        
         if verbose:
-            print("Parsing and transpiling the file...")
+            print(f"{_COL_BLUE}Parsing and transpiling the file...{_COL_END}")
         output = Parser(tokens).parse()
         if verbose:    
-            print("Done!\n")
+            print(f"{_COL_GREEN}Done!\n{_COL_END}")
