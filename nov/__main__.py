@@ -54,8 +54,21 @@ if __name__ == '__main__':
         sys.exit(1)
 
     if out_path is None:
-        with open(args_dict["Outfile"], 'w') as _:
-            pass
+        if type(args_dict["Outfile"]) != str or args_dict["Outfile"] is None:
+            print("Invalid path type")
+            sys.exit(1)
+        
+        try:
+            with open(args_dict["Outfile"], 'w') as _:
+                pass
+
+        except TypeError:
+            print("Invalid type")
+            sys.exit(1)
+
+        except IOError:
+            print("Couldn't create the output file, try the other path")
+            sys.exit(1)
 
     if verbose:
         print(f"{_COL_GREEN}Done!\n{_COL_END}")
@@ -75,7 +88,7 @@ if __name__ == '__main__':
         if verbose:    
             print(f"{_COL_GREEN}Done!\n{_COL_END}")
 
-        with open(out_path, 'w+') as OUTPUT_FILE:
+        with open(args_dict["Outfile"], 'w+') as OUTPUT_FILE:
             OUTPUT_FILE.write(output)
 
         print("Successfully transpiled your nov file! 🚀")
