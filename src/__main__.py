@@ -1,4 +1,5 @@
 import pathlib
+import typing
 import sys
 import argparse
 
@@ -7,6 +8,13 @@ from nparser import Parser
 
 import subprocess
 
+def get_file_path(user_given_path: str) -> typing.Optional[pathlib.Path]:
+    path = pathlib.Path(user_given_path)
+    
+    if path.exists() and path.is_file():
+        return path
+
+    return None
 
 if __name__ == '__main__':
     argparser = argparse.ArgumentParser(prog='nov', description="nov transpiler")
@@ -26,4 +34,15 @@ if __name__ == '__main__':
     )
 
     args = argparser.parse_args()
-    print(args)
+    args_dict = args.__dict__
+    
+    path = get_file_path(args_dict["Novfile"])
+    
+
+    with open(path, 'r') as _INPUT_NOV_FILE:
+        contents = _INPUT_NOV_FILE.read()
+
+        tokens = Lexer(list(contents), 0).tokenize()
+        output = Parser(tokens).parse()
+
+        print(output) 
