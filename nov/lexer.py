@@ -145,8 +145,11 @@ class Lexer:
                 tokens.append(Token(TokenType.DOT, '.'))
 
             elif character == ',':
-                tokens.append(Token(TokenType.COLON, ','))
+                tokens.append(Token(TokenType.COMMA, ','))
             
+            elif character == ':':
+                tokens.append(Token(TokenType.COLON, ':'))
+
             elif character == '%':
                 tokens.append(Token(TokenType.MODULO, '%'))
 

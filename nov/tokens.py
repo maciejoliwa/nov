@@ -28,7 +28,8 @@ class TokenType(Enum):
     LEFT_BRACE = "{"
     RIGHT_BRACE = "}"
     MODULO = "%"
-    COLON = ","
+    COMMA = ","
+    COLON = ":"
     DOT = "."
 
 @dataclass
