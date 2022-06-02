@@ -16,6 +16,7 @@ _TRANSLATIONS = {
     "or": "||",
     "to_string": "__nov_t_str",
     "is": "===",
+    "isNot": "!==",
     "else": "else ",
     "to_int": "Number.parseInt",
     "element": "document.querySelector",
