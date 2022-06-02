@@ -40,7 +40,7 @@ Variables are created using **<-** symbol
 ```js
 name <- "Avery"
 language <- "Nov"
-favourite_language <- "Fox"
+favourite_animal <- "Fox"
 
 name <! "Maciej"  // Assign new value
 ```
