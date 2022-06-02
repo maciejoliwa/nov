@@ -46,12 +46,16 @@ if __name__ == '__main__':
     
     if verbose:
         print(f"{_COL_BLUE}Parsing the path...{_COL_END} 🦊")
-    path = get_file_path(args_dict["Novfile"])
-    out_path = get_file_path(args_dict["Outfile"])
+    path: pathlib.Path = get_file_path(args_dict["Novfile"])
+    out_path: pathlib.Path = get_file_path(args_dict["Outfile"])
 
-    if path is None or out_path is None:
-        print("Invalid path, either provided .nov file path is invalid, or is the out file path")
+    if path is None:
+        print("The given .nov file does not exist or the path is invalid!")
         sys.exit(1)
+
+    if out_path is None:
+        with open(args_dict["Outfile"], 'w') as _:
+            pass
 
     if verbose:
         print(f"{_COL_GREEN}Done!\n{_COL_END}")
