@@ -41,6 +41,8 @@ Variables are created using **<-** symbol
 name <- "Avery"
 language <- "Nov"
 favourite_language <- "Fox"
+
+name <! "Maciej"  // Assign new value
 ```
 
 ### If and loops
