@@ -42,9 +42,10 @@ if __name__ == '__main__':
     args_dict = args.__dict__
     
     verbose = args_dict["verbose"]
+    print("🦊 The Nov Programming Language 🦊")
     
     if verbose:
-        print(f"{_COL_BLUE}Parsing the path...{_COL_END}")
+        print(f"{_COL_BLUE}Parsing the path...{_COL_END} 🦊")
     path = get_file_path(args_dict["Novfile"])
     if verbose:
         print(f"{_COL_GREEN}Done!\n{_COL_END}")
@@ -53,13 +54,15 @@ if __name__ == '__main__':
         contents = _INPUT_NOV_FILE.read()
 
         if verbose:
-            print(f"{_COL_BLUE}Tokenizing...{_COL_END}")
+            print(f"{_COL_BLUE}Tokenizing...{_COL_END} 🦊")
         tokens = Lexer(list(contents), 0).tokenize()
         if verbose:
             print(f"{_COL_GREEN}Done!\n{_COL_END}")
         
         if verbose:
-            print(f"{_COL_BLUE}Parsing and transpiling the file...{_COL_END}")
+            print(f"{_COL_BLUE}Parsing and transpiling the file...{_COL_END} 🦊")
         output = Parser(tokens).parse()
         if verbose:    
             print(f"{_COL_GREEN}Done!\n{_COL_END}")
+
+    print("Successfully transpiled your nov file! 🚀")
