@@ -27,6 +27,7 @@ Nov comes with a lot of built-in functions, that are just abstractions over java
 log = console.log
 to_int = Number.parseInt
 to_float = Number.parseFlot
+to_string = ANY.prototype.toString
 element = document.querySelector
 
 // More coming up in the future!
