@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='nov',
     license='MIT',
-    version='0.0.1',
+    version='0.0.2',
     description='Small and simple programming language that transpiles to JavaScript',
     author='Maciej Oliwa',
     author_email='maciejoliwa0906@gmail.com',

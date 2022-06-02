@@ -3,6 +3,10 @@ from typing import List, NoReturn
 from tokens import Token, TokenType
 
 
+_BUILTIN_FUNCTION_DEFINITIONS = {
+    "to_string": "function __nov_t_str(v) { if (v) { return v.toString() } }"
+}
+
 _TRANSLATIONS = {
     "log": "console.log",
     "func": "function ",
@@ -10,6 +14,8 @@ _TRANSLATIONS = {
     "elif": " else if",
     "and": "&&",
     "or": "||",
+    "to_string": "__nov_t_str",
+    "is": "===",
     "else": "else ",
     "to_int": "Number.parseInt",
     "element": "document.querySelector",
@@ -67,6 +73,9 @@ class Parser:
 
             if self._current >= len(self._tokens):
                 break
+
+        if "__nov_t_str" in output:
+            output = _BUILTIN_FUNCTION_DEFINITIONS["to_string"] + "\n" + output
 
         return output
             

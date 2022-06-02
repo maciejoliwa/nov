@@ -1,0 +1,4 @@
+i <- 623
+s <- to_string(i)
+
+log(s)
