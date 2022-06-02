@@ -85,18 +85,19 @@ func new_linked_list() {
 
 func push(ref, val) {
     if (ref.head is null) {
-        ref.head <! { next: null, value: val };
-    } else {
-        second_reference <- ref.head
-        forever {
-            if (second_reference.next is null) {
-                second_reference.next <! { next: null, value: val };
-                break;
-            } else {
-                second_reference <! second_reference.next;
-                break;
-            }
-        }
+        ref.head <! { value: val, next: null };
+        return; 
+    }
+    
+    second_reference <- ref.head;
+    
+    forever {
+        if (second_reference.next is null) {
+            second_reference.next <! { next: null, value: val };
+            break;
+        } 
+
+        second_reference <! second_reference.next;
     }
 }
 
@@ -109,7 +110,6 @@ func iterate(ref, f) {
         } else {
             break;
         }
-
     }
 }
 
