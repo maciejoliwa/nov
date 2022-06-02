@@ -50,6 +50,14 @@ Nov provides a pretty cool loop called **forever** which just runs... forever! U
 ```js
 i <- 0
 
+if (i is 0) {
+    log("i is equal to 0");
+}
+
+if (i isNot 1) {
+    log("i is not equal to 1");
+}
+
 forever {
     if (i == 5) {
         break
@@ -67,4 +75,49 @@ func sayHello() {
 }
 
 sayHello()
+```
+
+## Example linked list:
+```js
+func new_linked_list() {
+    return { head: null };
+} 
+
+func push(ref, val) {
+    if (ref.head is null) {
+        ref.head <! { next: null, value: val };
+    } else {
+        second_reference <- ref.head
+        forever {
+            if (second_reference.next is null) {
+                second_reference.next <! { next: null, value: val };
+                break;
+            } else {
+                second_reference <! second_reference.next;
+                break;
+            }
+        }
+    }
+}
+
+func iterate(ref, f) {
+    node <! ref.head;
+    forever {
+        if (node isNot null) {
+            f(node.value);
+            node <! node.next;
+        } else {
+            break;
+        }
+
+    }
+}
+
+l <- new_linked_list();
+
+push(l, 6);
+push(l, 9);
+push(l, 420);
+
+iterate(l, log);
 ```
