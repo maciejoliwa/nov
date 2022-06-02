@@ -1,0 +1,7 @@
+func is_even(num) {
+    return (num % 2 == 0)
+}
+
+log(is_even(69))
+log(is_even(420))
+log(is_even(3))

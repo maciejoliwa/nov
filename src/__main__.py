@@ -32,17 +32,31 @@ if __name__ == '__main__':
                             action='store_true',
                             help='Your .js file won\'t be run after transpilation'
     )
+    argparser.add_argument('-v', '--verbose', action='store_true', help='Verbose output')
 
     args = argparser.parse_args()
     args_dict = args.__dict__
     
-    path = get_file_path(args_dict["Novfile"])
+    verbose = args_dict["verbose"]
     
+    if verbose:
+        print("Parsing the path...")
+    path = get_file_path(args_dict["Novfile"])
+    if verbose:
+        print("Done!\n")
+
 
     with open(path, 'r') as _INPUT_NOV_FILE:
         contents = _INPUT_NOV_FILE.read()
 
+        if verbose:
+            print("Tokenizing...")
         tokens = Lexer(list(contents), 0).tokenize()
-        output = Parser(tokens).parse()
+        if verbose:
+            print("Done!\n")
 
-        print(output) 
+        if verbose:
+            print("Parsing and transpiling the file...")
+        output = Parser(tokens).parse()
+        if verbose:    
+            print("Done!\n")
