@@ -2,7 +2,7 @@
 
 A simple, small language that transpiles to JavaScript 
 
-##### Current version: 0.0.4
+##### Current version: 0.0.5
 ___
 Example:
 
@@ -29,6 +29,9 @@ to_int = Number.parseInt
 to_float = Number.parseFlot
 to_string = ANY.prototype.toString
 element = document.querySelector
+new_element = document.createElement,
+foreach = ANY.forEach  // example: foreach(array, function)
+on_click = ANY.addEventListener  // example: on_click(element, function)
 
 // More coming up in the future!
 ```

@@ -4,7 +4,9 @@ from tokens import Token, TokenType
 
 
 _BUILTIN_FUNCTION_DEFINITIONS = {
-    "to_string": "function __nov_t_str(v) { if (v) { return v.toString() } }"
+    "to_string": "function __nov_t_str(v) { if (v) { return v.toString() } }",
+    "on_click": "function __nov_on_click(e, f) { e.addEventListener('click', f); }",
+    "foreach": "function __nov_for_each(arr, f) { arr.forEach(f); }",
 }
 
 _TRANSLATIONS = {
@@ -21,7 +23,10 @@ _TRANSLATIONS = {
     "to_int": "Number.parseInt",
     "element": "document.querySelector",
     "return": "return ",
-    "to_float": "Number.parseFloat"
+    "to_float": "Number.parseFloat",
+    "new_element": "document.createElement",
+    "on_click": "__nov_on_click",
+    "foreach": "__nov_for_each",
 }
 
 @dataclass
@@ -77,6 +82,12 @@ class Parser:
 
         if "__nov_t_str" in output:
             output = _BUILTIN_FUNCTION_DEFINITIONS["to_string"] + "\n" + output
+
+        if "__nov_on_click" in output:
+            output = _BUILTIN_FUNCTION_DEFINITIONS["on_click"] + "\n" + output
+
+        if "__nov_for_each" in output:
+            output = _BUILTIN_FUNCTION_DEFINITIONS["foreach"] + "\n" + output
 
         return output
             

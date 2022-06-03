@@ -156,6 +156,12 @@ class Lexer:
             elif character == '=' and self.peek() == '=':
                 tokens.append(Token(TokenType.EQUAL, '==='))
 
+            elif character == '[':
+                tokens.append(Token(TokenType.LEFT_SQUARE_BRACKET, '['))
+
+            elif character == ']':
+                tokens.append(Token(TokenType.RIGHT_SQUARE_BRACKET, ']'))
+
             # PARSE IDENTIFIER
             elif character.isalpha():
                 tokens.append(self.parse_identifer(character))

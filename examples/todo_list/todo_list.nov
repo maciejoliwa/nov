@@ -1,0 +1,28 @@
+todo_input <- element(".input");
+add_button <- element(".add");
+todos_wrapper <- element(".todos");
+todos <- [{ content: "Finish this app", done: false }];
+
+func render_single_todo(todo) {
+    todo_to_add <- new_element("div");
+    todo_to_add.innerHTML <! "<b>"+todo.content+"</b>";
+    todos_wrapper.appendChild(todo_to_add);
+}
+
+func render_todos() {
+    todos_wrapper.innerHTML <! null;
+    foreach(todos, render_single_todo);
+}
+
+func add_todo() {
+    if (todo_input.value isNot "") {
+        todos.push({ content: todo_input.value, done: false });
+        todo_input.value <! null;
+        render_todos();
+    } else {
+        alert("Input cannot be empty!");
+    }
+}
+
+on_click(add_button, add_todo);
+render_todos();

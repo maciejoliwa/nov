@@ -31,6 +31,8 @@ class TokenType(Enum):
     COMMA = ","
     COLON = ":"
     DOT = "."
+    LEFT_SQUARE_BRACKET = '['
+    RIGHT_SQUARE_BRACKET = ']'
 
 @dataclass
 class Token:

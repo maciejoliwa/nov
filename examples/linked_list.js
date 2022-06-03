@@ -3,14 +3,13 @@ return {head:null};
 }
 
 function push(ref,val){
-console.log(`dupa`+val);
-
 if(ref.head===null){
 ref.head = {value:val,next:null};
 return ;
 }
 
 let second_reference = ref.head;
+
 while(true){
 if(second_reference.next===null){
 second_reference.next = {next:null,value:val};
@@ -30,7 +29,6 @@ node = node.next;
 }else {
 break;
 }
-
 }
 }
 
@@ -41,4 +39,3 @@ push(l,9);
 push(l,420);
 
 iterate(l,console.log);
-console.log(l);
