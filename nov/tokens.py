@@ -16,6 +16,7 @@ class TokenType(Enum):
     LESS_EQ = "<="
     SEMICOLON = ";"
     EQUAL = "=="
+    SAME = "="
     UNDERSCORE = "_"
     LEFT_PAREN = "("
     RIGHT_PAREN = ")"

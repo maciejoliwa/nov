@@ -2,7 +2,7 @@
 
 A simple, small language that transpiles to JavaScript 
 
-##### Current version: 0.0.5
+##### Current version: 0.0.6
 ___
 Example:
 

@@ -51,6 +51,9 @@ class Parser:
     def get_current_token(self) -> Token:
         return self._tokens[self._current]
 
+    def get_previous_token(self) -> Token:
+        return self._tokens[self._current - 1]
+
     def parse(self) -> str:
         output = ""
 
@@ -71,6 +74,15 @@ class Parser:
                     self.next_token()
                 else:
                     output += token._literal
+
+            elif token._literal == '=' and self.get_previous_token()._type == TokenType.IDENTIFIER:
+                print(f"\n\033[91m{self.get_previous_token()._literal} = {self.peek()._literal}\033[0m")
+                print("\n\033[93mWhoa there, cowboy! In nov we don't use '=' as a way of assigning values!")
+                print("If you want to assign a value fo the first time, use <- operator like this:")
+                print("\033[94mvariable_name <- variable_value;  // for example: name <- 'fox';")
+                print("\033[93mand if you want to assign a new value, you do this:")
+                print("\033[94mvariable_name <! new_value;\n\033[0m")
+                output += token._literal
 
             else:
                 output += token._literal

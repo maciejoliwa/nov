@@ -155,6 +155,9 @@ class Lexer:
 
             elif character == '=' and self.peek() == '=':
                 tokens.append(Token(TokenType.EQUAL, '==='))
+            
+            elif character == "=":
+                tokens.append(Token(TokenType.SAME, '='))
 
             elif character == '[':
                 tokens.append(Token(TokenType.LEFT_SQUARE_BRACKET, '['))
