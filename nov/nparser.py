@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import List, NoReturn
+
 from tokens import Token, TokenType
 
 
@@ -57,6 +58,9 @@ class Parser:
     def parse(self) -> str:
         output = ""
 
+        # We keep track of currently created variables so we can report any errors with them later on :>
+        variables = []
+
         while True:
             token = self.get_current_token()
 
@@ -64,12 +68,22 @@ class Parser:
                 break
 
             if token._type == TokenType.IDENTIFIER:
+
+                if self.peek()._type == TokenType.ASSIGN:
+                    variables.append(token)                
+
                 token._literal = self.replace_nov_identifier(token._literal)
 
                 if self.peek()._type == TokenType.ASSIGN:
                     output += f"let {token._literal} = "
                     self.next_token()
                 elif self.peek()._type == TokenType.ASSIGN_NEW:
+
+                    if token not in variables:
+                        print(f"\n\033[91m{token._literal} <! ...\033[0m")
+                        print("\n\033[93mHey there! It seems you're trying to assign a new value to the variable you've never defined before!")
+                        print("Make sure all of your variables are defined before you try to assign any new values to them, JavaScript can be picky about it!\033[0m")
+
                     output += f"{token._literal} = "
                     self.next_token()
                 else:
@@ -81,7 +95,7 @@ class Parser:
                 print("If you want to assign a value fo the first time, use <- operator like this:")
                 print("\033[94mvariable_name <- variable_value;  // for example: name <- 'fox';")
                 print("\033[93mand if you want to assign a new value, you do this:")
-                print("\033[94mvariable_name <! new_value;\n\033[0m")
+                print("\033[94mvariable_name <! new_value;\033[0m")
                 output += token._literal
 
             else:

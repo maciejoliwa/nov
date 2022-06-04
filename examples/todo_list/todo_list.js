@@ -8,7 +8,6 @@ let todos = [{content:`Finish this app`,done:false}];
 function render_single_todo(todo){
 let todo_to_add = document.createElement(`div`);
 todo_to_add.innerHTML = `<b>`+todo.content+`</b>`;
-
 todos_wrapper.appendChild(todo_to_add);
 }
 
@@ -25,9 +24,7 @@ render_todos();
 }else {
 alert(`Input cannot be empty!`);
 }
-
 }
 
 __nov_on_click(add_button,add_todo);
-
 render_todos();
